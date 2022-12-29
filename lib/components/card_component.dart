@@ -12,13 +12,11 @@ class _CardComponentState extends State<CardComponent> {
   Widget build(BuildContext context) {
     return Center(
       child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        elevation: 0,
+        //elevation: 0,
         child: Container(
             height: 100,
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -26,7 +24,7 @@ class _CardComponentState extends State<CardComponent> {
               ),
             ),
             child: Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,7 +36,7 @@ class _CardComponentState extends State<CardComponent> {
                   ),
                   CircleAvatar(
                     backgroundColor: Colors.transparent,
-                    radius: 48, // Image radius
+                    radius: 48,
                     backgroundImage: NetworkImage(
                         'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png'),
                   ),
