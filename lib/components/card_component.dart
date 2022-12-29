@@ -13,6 +13,9 @@ class _CardComponentState extends State<CardComponent> {
     return Center(
       child: Card(
         //elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
         child: Container(
             height: 100,
             decoration: BoxDecoration(
