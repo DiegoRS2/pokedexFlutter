@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poke/pagina_principal.dart';
 
 import 'boas_vindas_page.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     // ignore: prefer_const_constructors
     return MaterialApp(
       title: 'Pokedex',
-      home: const BoasVindas(),
+      home: PaginaPrincipal(pokeApi: []),
     );
   }
 }

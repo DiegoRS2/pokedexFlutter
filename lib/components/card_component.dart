@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CardComponent extends StatefulWidget {
-  const CardComponent({super.key});
+  String nome , img, id;
+  Color cor;
 
+  CardComponent({super.key, required this.nome, required this.img, required this.id, required this.cor});
   @override
   State<CardComponent> createState() => _CardComponentState();
 }
@@ -12,19 +14,15 @@ class _CardComponentState extends State<CardComponent> {
   Widget build(BuildContext context) {
     return Center(
       child: Card(
-        //elevation: 0,
+        color: widget.cor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
+        
         child: Container(
             height: 100,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.red, Colors.yellow, Colors.green],
-              ),
             ),
             child: Padding(
               padding: const EdgeInsets.all(10),
@@ -35,13 +33,12 @@ class _CardComponentState extends State<CardComponent> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text('#44'), Text('bubasalro')],
+                    children: [Text(widget.id), Text(widget.nome)],
                   ),
-                  CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    radius: 48,
-                    backgroundImage: NetworkImage(
-                        'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png'),
+                  Image(
+                    image: NetworkImage(
+                        widget.img,),
+                        width: 100,
                   ),
                 ],
               ),

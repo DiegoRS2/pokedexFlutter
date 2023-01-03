@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:poke/models/pokemon_model.dart';
 import 'components/card_component.dart';
 
+// ignore: must_be_immutable
 class PaginaPrincipal extends StatefulWidget {
   final jsonResponse = '';
-  late PokeApi pokeApi;
+  late List pokeApi;
   PaginaPrincipal({super.key, required this.pokeApi});
 
   @override
@@ -15,8 +15,13 @@ class PaginaPrincipal extends StatefulWidget {
 
 class _PaginaPrincipalState extends State<PaginaPrincipal> {
   @override
+  void initState() {
+    super.initState();
+    fetchPOkemon();
+  }
+
+  @override
   Widget build(BuildContext context) {
-   fetchPokemon();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -34,9 +39,31 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: widget.pokeApi.pokemon?.length,
+                itemCount: widget.pokeApi.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return CardComponent();
+                  var type = widget.pokeApi[index]['type'][0];
+                  return InkWell(
+                    onTap:(){
+                      
+                    },
+                    child: CardComponent(
+                      nome: widget.pokeApi[index]['name'].toString(),
+                      id: widget.pokeApi[index]['id'].toString(),
+                      img: widget.pokeApi[index]['img'].toString(),
+                      cor: type == 'Grass' ? Colors.green : 
+                      type == "Fire" ? Colors.red : 
+                      type == "Water" ? Colors.blue :
+                      type == "Eletric" ? Colors.yellow:
+                      type == "Rock" ? Colors.grey:
+                      type == "Ground" ? Colors.brown:
+                      type == "Physic" ? Colors.indigo:
+                      type == "Fighting" ? Colors.orange:
+                      type == "Bug" ? Colors.lightGreen:
+                      type == "Ghost" ? Colors.deepPurple:
+                      type == "Normal" ? Colors.black26:
+                      Colors.pink
+                      ),
+                  );
                 },
               ),
             )
@@ -46,19 +73,13 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
     );
   }
 
-  Future<PokeApi> getPOkemon() async {
-    Uri uri = Uri.parse('https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json');
-    http.Response response = await http.get(uri);
-    if (response.statusCode == 200) {
-      var jsonResponse = jsonDecode(response.body);
-      return PokeApi.fromJson(jsonResponse);
-    } else {
-      print('Erro ao obter Pokémon: status ${response.statusCode}');
-      return PokeApi();
-    }
-  }
-
-  fetchPokemon() {
-    getPOkemon().then((pokeList) => widget.pokeApi = pokeList);
+  void fetchPOkemon() async {
+    Uri uri = Uri.parse(
+        'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json');
+    await http.get(uri).then((value) {
+      var jsonResponse = jsonDecode(value.body);
+      widget.pokeApi = jsonResponse['pokemon'];
+      setState(() {});
+    });
   }
 }

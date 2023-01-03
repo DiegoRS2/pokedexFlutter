@@ -11,7 +11,7 @@ class BoasVindas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      nextScreen: PaginaPrincipal(pokeApi: PokeApi(),),
+      nextScreen: PaginaPrincipal(pokeApi: const [],),
       splash: Lottie.network(
           'https://assets5.lottiefiles.com/packages/lf20_iwmd6pyr.json'),
       backgroundColor: Colors.black,
