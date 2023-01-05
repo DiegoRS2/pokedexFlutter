@@ -55,7 +55,7 @@ class _PageDetalhesState extends State<PageDetalhes> {
             ),
           ),
           Align(
-            alignment: Alignment.topRight,
+            alignment: Alignment.bottomRight,
             child: Image.network(widget.pokemonSelecionado['img'].toString()),
           ),
         ],
