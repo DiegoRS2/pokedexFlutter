@@ -17,50 +17,51 @@ class CardComponent extends StatefulWidget {
 class _CardComponentState extends State<CardComponent> {
   @override
   Widget build(BuildContext context) {
+    ImageCache().clear();
     return Center(
       child: Card(
-        color: widget.cor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Container(
-            height: 100,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '#${widget.id}',
-                        style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        widget.nome,
-                        style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                  LayoutBuilder(
-                    builder: (context, constraints) {
-                      return Image.network(
-                        widget.img,
-                        width: constraints.maxHeight,
-                        height: constraints.maxHeight,
-                      );
-                    },
-                  )
-                ],
+  color: widget.cor,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(20),
+  ),
+  child: Container(
+    height: 100,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '#${widget.id}',
+                style: const TextStyle(
+                  fontSize: 18, fontWeight: FontWeight.bold),
               ),
-            )),
+              Text(
+                widget.nome,
+                style: const TextStyle(
+                  fontSize: 18, fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          AspectRatio(
+            aspectRatio: 1,
+            child: FittedBox(
+              fit: BoxFit.contain,
+              child: Image.network(widget.img),
+            ),
+          )
+        ],
       ),
+    ),
+  ),
+),
+
     );
   }
 }
