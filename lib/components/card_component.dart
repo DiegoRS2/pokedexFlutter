@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CardComponent extends StatefulWidget {
-  String nome , img, id;
+  String nome, img, id;
   Color cor;
 
-  CardComponent({super.key, required this.nome, required this.img, required this.id, required this.cor});
+  CardComponent(
+      {super.key,
+      required this.nome,
+      required this.img,
+      required this.id,
+      required this.cor});
   @override
   State<CardComponent> createState() => _CardComponentState();
 }
@@ -18,7 +23,6 @@ class _CardComponentState extends State<CardComponent> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        
         child: Container(
             height: 100,
             decoration: BoxDecoration(
@@ -28,18 +32,31 @@ class _CardComponentState extends State<CardComponent> {
               padding: const EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text(widget.id), Text(widget.nome)],
+                    children: [
+                      Text(
+                        '#${widget.id}',
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        widget.nome,
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      )
+                    ],
                   ),
-                  Image(
-                    image: NetworkImage(
-                        widget.img,),
-                        width: 100,
-                  ),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      return Image.network(
+                        widget.img,
+                        width: constraints.maxHeight,
+                        height: constraints.maxHeight,
+                      );
+                    },
+                  )
                 ],
               ),
             )),
