@@ -62,7 +62,7 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
                     child: widget.pokeApi.isEmpty
                         ? Center(
                             child: Text(
-                              "Pokemon not found!",
+                              "Pokemon não encontrado!",
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.deepOrange[900],
