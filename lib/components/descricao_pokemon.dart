@@ -67,8 +67,8 @@ class _DescricaoPokemonState extends State<DescricaoPokemon> {
       itemCount: widget.next_evolution?.length,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
-            title: const Text('Evolução',
-                style: TextStyle(fontWeight: FontWeight.bold)),
+            title: Text('${widget.next_evolution != null && widget.next_evolution!.length > 1 ? index + 1 : index + 2}° Evolução',
+                style:const TextStyle(fontWeight: FontWeight.bold)),
             trailing: Text(widget.next_evolution![index]['name']));
       },
     ),
