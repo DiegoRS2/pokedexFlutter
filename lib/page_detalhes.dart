@@ -45,6 +45,7 @@ class _PageDetalhesState extends State<PageDetalhes> {
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
+                  const SizedBox(height: 10,),
                   Container(
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
