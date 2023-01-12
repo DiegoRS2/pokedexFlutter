@@ -91,7 +91,9 @@ class _PageDetalhesState extends State<PageDetalhes> {
                       chance: widget.pokemonSelecionado['spawn_chance'].toString(),
                       fraqueza: widget.pokemonSelecionado['weaknesses'].join(', '),
                       peso: widget.pokemonSelecionado['weight'].toString(),
-                      tempo: widget.pokemonSelecionado['spawn_time'].toString(),)),
+                      tempo: widget.pokemonSelecionado['spawn_time'].toString(),
+                      next_evolution: widget.pokemonSelecionado['next_evolution'],
+                      )),
                       // conteúdo da segunda tab
                       Center(child: Text('Conteúdo da Tab 2')),
                       Center(child: Text('teste'),)
