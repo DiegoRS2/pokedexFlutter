@@ -94,9 +94,8 @@ class _PageDetalhesState extends State<PageDetalhes> {
                   body: TabBarView(
                     
                     children: [
-                      // conteúdo da primeira tab
                       Container(
-                        color: Color.fromARGB(255, 241, 239, 239),
+                        color: const Color.fromARGB(255, 241, 239, 239),
                           child: DescricaoPokemon(
                         nome: widget.pokemonSelecionado['name'],
                         altura: widget.pokemonSelecionado['height'].toString(),
@@ -110,9 +109,8 @@ class _PageDetalhesState extends State<PageDetalhes> {
                         next_evolution:
                             widget.pokemonSelecionado['next_evolution'],
                       )),
-                      // conteúdo da segunda tab
                       Container(
-                        color: Color.fromARGB(255, 241, 239, 239),
+                        color: const Color.fromARGB(255, 241, 239, 239),
                           child: ListView.builder(
                         itemCount: widget._pokemonStats.length,
                         itemBuilder: (BuildContext context, int index) {
