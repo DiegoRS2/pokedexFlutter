@@ -26,6 +26,7 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 241, 239, 239),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -34,7 +35,7 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const Text('Pokedex',
+            const Text('Pokédex',
                 style: TextStyle(
                   color: Colors.deepOrange,
                   fontWeight: FontWeight.w600,
@@ -140,7 +141,7 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
 
   Color selecionaCor() {
     return widget.type == 'Grass'
-        ? const Color.fromARGB(255, 127, 247, 131)
+        ? Color.fromARGB(255, 113, 219, 116)
         : widget.type == "Fire"
             ? const Color.fromARGB(255, 241, 97, 86)
             : widget.type == "Water"
@@ -161,8 +162,7 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
                                             ? const Color.fromARGB(
                                                 255, 121, 85, 184)
                                             : widget.type == "Normal"
-                                                ? const Color.fromARGB(
-                                                    66, 82, 81, 81)
+                                                ? const Color.fromARGB(255, 235, 232, 232)
                                                 : const Color.fromARGB(
                                                     255, 214, 75, 121);
   }
