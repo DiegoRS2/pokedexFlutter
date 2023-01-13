@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'components/descricao_pokemon.dart';
@@ -93,9 +92,11 @@ class _PageDetalhesState extends State<PageDetalhes> {
                     ),
                   ),
                   body: TabBarView(
+                    
                     children: [
                       // conteúdo da primeira tab
-                      Center(
+                      Container(
+                        color: Color.fromARGB(255, 241, 239, 239),
                           child: DescricaoPokemon(
                         nome: widget.pokemonSelecionado['name'],
                         altura: widget.pokemonSelecionado['height'].toString(),
@@ -110,7 +111,8 @@ class _PageDetalhesState extends State<PageDetalhes> {
                             widget.pokemonSelecionado['next_evolution'],
                       )),
                       // conteúdo da segunda tab
-                      Center(
+                      Container(
+                        color: Color.fromARGB(255, 241, 239, 239),
                           child: ListView.builder(
                         itemCount: widget._pokemonStats.length,
                         itemBuilder: (BuildContext context, int index) {
@@ -127,8 +129,11 @@ class _PageDetalhesState extends State<PageDetalhes> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  SizedBox(
+                                  Container(
                                     width: 200,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30)
+                                    ),
                                     child: LinearProgressIndicator(
                                       minHeight: 10,
                                       value: widget._pokemonStats[index]
